@@ -2,10 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './style/index.css';
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import Navbar from "./components/Navbar/Navbar";
 
 ReactDOM.render(
-    <App />,
+        <App/>,
     document.getElementById('root')
 );
-registerServiceWorker();

@@ -2,4 +2,29 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-image: url('https://images.pexels.com/photos/730564/pexels-photo-730564.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.form-center{
+  width: 50%;
+  margin: 0 auto;
+  background: #efefef;
+  padding: 1rem;
+  border-radius: 10px
+}
+
+.form-group{
+  width: 70%;
+  margin: 0 auto;
+  padding: 7px 0;
+}
+.nav-item:hover, .nav-link:hover{
+  text-decoration:none;
+  color: #969191;
+}
+
+.nav-item, .nav-link{
+  color: #efefef !important;
 }

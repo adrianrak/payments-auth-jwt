@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {ToastContainer, toast} from 'react-toastify';
 import ApiService from '../../service/api.service';
 
 export default class SignIn extends Component {
@@ -6,12 +7,35 @@ export default class SignIn extends Component {
         super(props);
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            background: ''
         }
     }
 
-    handleSubmit = () => {
+    handleSubmit = (event) => {
+        event.preventDefault();
+        const userLoginData = {
+            email: this.state.email,
+            password: this.state.password
+        };
 
+        ApiService.signInUser(userLoginData)
+            .then((response) => {
+                toast.success("You have login into the account successfully!", {
+                    position: toast.POSITION.TOP_CENTER
+                });
+                this.setState({
+                    background: '#37b137'
+                });
+                console.log(response);
+            }).catch(() => {
+            toast.error('problem error', {
+                position: toast.POSITION.TOP_LEFT
+            });
+            this.setState({
+                background: 'red'
+            })
+        });
     };
 
     handleChange = (event) => {
@@ -23,6 +47,10 @@ export default class SignIn extends Component {
     render() {
         return (
             <form className="form-center">
+                <div className="form-group">
+                    <ToastContainer  className="toast-view" style={{ backgroundColor: this.state.background}}
+                                     autoClose={1000}/>
+                </div>
                 <div className="form-group">
                     <label>Email</label>
                     <input type="email" className="form-control" name="email"
@@ -39,7 +67,7 @@ export default class SignIn extends Component {
                            placeholder="Password"/>
                 </div>
                 <div className="text-center mt-3">
-                    <button type="submit" className="btn btn-secondary">Log In</button>
+                    <button type="submit" className="btn btn-secondary" onClick={event=>this.handleSubmit(event)}>Log In</button>
                 </div>
             </form>
         );

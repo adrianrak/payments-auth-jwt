@@ -26,3 +26,25 @@ body {
 .nav-item, .nav-link{
   color: #efefef !important;
 }
+
+
+/*Toast styles*/
+/*.Toastify__close-button Toastify__close-button--error{*/
+  /*display:none;*/
+/*}*/
+
+.toast-view{
+  position:absolute;
+  top:20px;
+  right:20px;
+  width:170px;
+  font-size:20px;
+  text-align:center;
+  border-radius:4px;
+  cursor: pointer;
+  color: #efefef;
+}
+
+.toast-view button{
+  display:none;
+}

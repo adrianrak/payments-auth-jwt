@@ -14,23 +14,23 @@ const VerifyToken = require('./VerifyToken');
 
 router.post('/register', function (req, res) {
     var hashedPassword = bcrypt.hashSync(req.body.password, 8);
-    // var hashedPostalCode = bcrypt.hashSync(req.body.postalCode, 8);
-    // var hashedCreditCardNumber = bcrypt.hashSync(req.body.creditCardNumber, 8);
-    // var hashedExpiryDateOfCard = bcrypt.hashSync(req.body.expiryDateOfCard, 8);
-    // var hashedCvv = bcrypt.hashSync(req.body.cvv, 8);
+    var hashedPostalCode = bcrypt.hashSync(req.body.postalCode, 8);
+    var hashedCreditCardNumber = bcrypt.hashSync(req.body.creditCardNumber, 8);
+    var hashedExpiryDateOfCard = bcrypt.hashSync(req.body.expiryDateOfCard, 8);
+    var hashedCvv = bcrypt.hashSync(req.body.cvv, 8);
 
     User.create({
             name: req.body.name,
             email: req.body.email,
             password: hashedPassword,
-            postalCode: req.body.postalCode,
-            creditCardNumber: req.body.creditCardNumber,
-            expiryDateOfCard: req.body.expiryDateOfCard,
-            cvv: req.body.cvv
-            // postalCode: hashedPostalCode,
-            // creditCardNumber: hashedCreditCardNumber,
-            // expiryDateOfCard: hashedExpiryDateOfCard,
-            // cvv: hashedCvv
+            // postalCode: req.body.postalCode,
+            // creditCardNumber: req.body.creditCardNumber,
+            // expiryDateOfCard: req.body.expiryDateOfCard,
+            // cvv: req.body.cvv
+            postalCode: hashedPostalCode,
+            creditCardNumber: hashedCreditCardNumber,
+            expiryDateOfCard: hashedExpiryDateOfCard,
+            cvv: hashedCvv
         },
         function (err, user) {
             if (err) return res.status(500).send("There was a problem registering the user.")

@@ -11,7 +11,7 @@ export default class App extends Component {
             <HashRouter>
                 <div>
                     <Navbar/>
-                    <div className="container mt-5">
+                    <div className="container mt-4">
                         <Switch>
                             <Route exact path='/' component={Home}/>
                             <Route exact path='/signin' component={SignIn}/>

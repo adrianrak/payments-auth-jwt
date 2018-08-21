@@ -16,7 +16,12 @@ body {
 .form-group{
   width: 70%;
   margin: 0 auto;
-  padding: 7px 0;
+  padding: 1px 0;
+}
+
+.form-group label{
+  margin-top: 0.4rem;
+  margin-bottom: 0;
 }
 .nav-item:hover, .nav-link:hover{
   text-decoration:none;
@@ -29,10 +34,6 @@ body {
 
 
 /*Toast styles*/
-/*.Toastify__close-button Toastify__close-button--error{*/
-  /*display:none;*/
-/*}*/
-
 .toast-view{
   position:absolute;
   top:20px;

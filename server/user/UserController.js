@@ -15,9 +15,9 @@ router.post('/', function (req, res) {
             email: req.body.email,
             password: req.body.password,
             postalCode: req.body.postalCode,
-            creditCardNumber: req.body.creditCardNumber,
-            expiryDateOfCard: req.body.expiryDateOfCard,
-            cvv: req.body.cvv
+            cardNumber: req.body.cardNumber,
+            cardExpiryDate: req.body.cardExpiryDate,
+            cardCVV: req.body.cardCVV
         },
         function (err, user) {
             if (err) return res.status(500).send("There was a problem adding the information to the database.");

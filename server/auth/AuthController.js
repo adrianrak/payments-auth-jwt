@@ -15,22 +15,18 @@ const VerifyToken = require('./VerifyToken');
 router.post('/register', function (req, res) {
     var hashedPassword = bcrypt.hashSync(req.body.password, 8);
     var hashedPostalCode = bcrypt.hashSync(req.body.postalCode, 8);
-    var hashedCreditCardNumber = bcrypt.hashSync(req.body.creditCardNumber, 8);
-    var hashedExpiryDateOfCard = bcrypt.hashSync(req.body.expiryDateOfCard, 8);
-    var hashedCvv = bcrypt.hashSync(req.body.cvv, 8);
+    var hashedCardNumber = bcrypt.hashSync(req.body.cardNumber, 8);
+    var hashedCardExpiryDate = bcrypt.hashSync(req.body.cardExpiryDate, 8);
+    var hashedCardCVV = bcrypt.hashSync(req.body.cardCVV, 8);
 
     User.create({
             name: req.body.name,
             email: req.body.email,
             password: hashedPassword,
-            // postalCode: req.body.postalCode,
-            // creditCardNumber: req.body.creditCardNumber,
-            // expiryDateOfCard: req.body.expiryDateOfCard,
-            // cvv: req.body.cvv
             postalCode: hashedPostalCode,
-            creditCardNumber: hashedCreditCardNumber,
-            expiryDateOfCard: hashedExpiryDateOfCard,
-            cvv: hashedCvv
+            cardNumber: hashedCardNumber,
+            cardExpiryDate: hashedCardExpiryDate,
+            cardCVV: hashedCardCVV
         },
         function (err, user) {
             if (err) return res.status(500).send("There was a problem registering the user.")
@@ -52,9 +48,9 @@ router.get('/me', VerifyToken, function (req, res, next) {
     User.findById(req.userId, {
         password: 0,
         postalCode: 0,
-        creditCardNumber: 0,
-        expiryDateOfCard: 0,
-        cvv: 0
+        cardNumber: 0,
+        cardExpiryDate: 0,
+        cardCVV: 0
     }, function (err, user) {
         if (err) return res.status(500).send("There was a problem finding the user.");
         if (!user) return res.status(404).send("No user found.");

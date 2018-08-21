@@ -4,9 +4,9 @@ var UserSchema = new mongoose.Schema({
     email: String,
     password: String,
     postalCode: String,
-    creditCardNumber: Number,
-    expiryDateOfCard: String,
-    cvv: String,
+    cardNumber: String,
+    cardExpiryDate: String,
+    cardCVV: String,
     createdDate: {
         type: Date,
         default: Date.now

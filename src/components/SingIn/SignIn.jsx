@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {ToastContainer, toast} from 'react-toastify';
 import ApiService from '../../service/api.service';
+import {Link} from 'react-router-dom';
 
 export default class SignIn extends Component {
     constructor(props) {
@@ -48,8 +49,8 @@ export default class SignIn extends Component {
         return (
             <form className="form-center">
                 <div className="form-group">
-                    <ToastContainer  className="toast-view" style={{ backgroundColor: this.state.background}}
-                                     autoClose={1000}/>
+                    <ToastContainer className="toast-view" style={{backgroundColor: this.state.background}}
+                                    autoClose={1000}/>
                 </div>
                 <div className="form-group">
                     <label>Email</label>
@@ -67,7 +68,12 @@ export default class SignIn extends Component {
                            placeholder="Password"/>
                 </div>
                 <div className="text-center mt-3">
-                    <button type="submit" className="btn btn-secondary" onClick={event=>this.handleSubmit(event)}>Log In</button>
+                    <button type="submit" className="btn btn-secondary"
+                            onClick={event => this.handleSubmit(event)}>
+                        <Link to="/userpanel">
+                            Log In
+                        </Link>
+                    </button>
                 </div>
             </form>
         );

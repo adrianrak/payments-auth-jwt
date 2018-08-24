@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
+const braintree = require('braintree');
 router.use(bodyParser.urlencoded({
     extended: false
 }));
@@ -11,6 +12,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 var config = require('../config');
 const VerifyToken = require('./VerifyToken');
+
 
 router.post('/register', function (req, res) {
     var hashedPassword = bcrypt.hashSync(req.body.password, 8);
@@ -88,5 +90,37 @@ router.get('/logout', function (req, res) {
         token: null
     });
 });
+
+//BRAINTREE
+
+router.post('/', function (req, res, next) {
+    var gateway = braintree.connect({
+        environment: braintree.Environment.Sandbox,
+        // Use your own credentials from the sandbox Control Panel here
+        merchantId: 'mhjjzn94dhchd3zh',
+        publicKey: 'j66jhxqmhs3gtkhy',
+        privateKey: '66a308ae81537160d832bb21d1e93c3b'
+    });
+
+    // Use the payment method nonce here
+    var nonceFromTheClient = req.body.paymentMethodNonce;
+    // Create a new transaction for $10
+    var newTransaction = gateway.transaction.sale({
+        amount: '10.00',
+        paymentMethodNonce: nonceFromTheClient,
+        options: {
+            // This option requests the funds from the transaction
+            // once it has been authorized successfully
+            submitForSettlement: true
+        }
+    }, function (error, result) {
+        if (result) {
+            res.send(result);
+        } else {
+            res.status(500).send(error);
+        }
+    });
+});
+
 
 module.exports = router;

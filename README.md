@@ -1,6 +1,5 @@
 # Node.js RESTful APIs with JSON Web Tokens and React
 
-https://payments-auth-jwt.herokuapp.com/#/
 
 ## Technologies
 
@@ -11,7 +10,7 @@ https://payments-auth-jwt.herokuapp.com/#/
 
 ### Demo
 
-You can check the website preview with [this link](https://vladyani.github.io/payments-auth-jwt/)
+You can check the website preview with [this link](https://payments-auth-jwt.herokuapp.com/#/)
 
 ### Authors
 

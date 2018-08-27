@@ -12,7 +12,7 @@ export default class UserPanel extends Component {
 
     componentDidMount = () => {
         // Get a client token for authorization from your server
-        // const response = fetch("server.test/client_token");
+        // const response = fetch("checkout/client_token");
         // const clientToken = response.json(); // If returned as JSON string
 
         this.setState({

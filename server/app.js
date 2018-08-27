@@ -10,8 +10,10 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-//app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(express.static(path.join(__dirname, '../build')));
+app.get('/', function(req, res) {
+    res.render('index.html');
+});
 
 var UserController = require('./user/UserController');
 app.use('/users', UserController);

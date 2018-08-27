@@ -10,6 +10,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.set('view engine', 'html');
 app.use(express.static(path.join(__dirname, '../build')));
 app.get('/', function(req, res) {
     res.render('index.html');
@@ -26,7 +27,7 @@ app.use('/api/auth', AuthController);
 
 // The checkout route
 var checkout = require('./auth/checkout');
-app.use('/checkout', checkout);
+app.use('/api/auth/checkout', checkout);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     next(createError(404));

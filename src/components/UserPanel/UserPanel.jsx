@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import ApiService from '../../service/api.service';
 import DropIn from "braintree-web-drop-in-react";
+import axios from 'axios';
 
 export default class UserPanel extends Component {
     instance;
 
     state = {
-        clientToken: null
+        clientToken: 'sandbox_25zg57sb_mhjjzn94dhchd3zh'
     };
 
     componentDidMount = () => {
@@ -16,15 +17,16 @@ export default class UserPanel extends Component {
         // const response = fetch("server.test/client_token");
         // const clientToken = response.json(); // If returned as JSON string
 
-        this.setState({
-            clientToken: 'sandbox_25zg57sb_mhjjzn94dhchd3zh'
-        });
+        // this.setState({
+        //     clientToken: 'sandbox_25zg57sb_mhjjzn94dhchd3zh'
+        // });
     };
 
     buy = () => {
         // Send the nonce to your server
         const {nonce} = this.instance.requestPaymentMethod();
-        fetch(`/checkout/${nonce}`);
+        // fetch(`/checkout/${nonce}`);
+        fetch(`http://localhost:4000//api/auth/checkout/${nonce}`);
     };
 
     render() {

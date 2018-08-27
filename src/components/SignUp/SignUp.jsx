@@ -34,14 +34,14 @@ export default class SignUp extends Component {
             ApiService.signUpUser(registerUserData)
                 .then(() => {
                     toast.success("You have created the account successfully!", {
-                        position: toast.POSITION.TOP_CENTER
+                        position: toast.POSITION.TOP_RIGHT
                     });
                     this.setState({
                         background: '#37b137'
                     })
                 }).catch(() => {
                 toast.error('problem error', {
-                    position: toast.POSITION.TOP_LEFT
+                    position: toast.POSITION.TOP_RIGHT
                 });
                 this.setState({
                     background: 'red'

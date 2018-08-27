@@ -23,7 +23,7 @@ export default class SignIn extends Component {
         ApiService.signInUser(userLoginData)
             .then((response) => {
                 toast.success("You have login into the account successfully!", {
-                    position: toast.POSITION.TOP_CENTER
+                    position: toast.POSITION.TOP_RIGHT
                 });
                 this.setState({
                     background: '#37b137'
@@ -31,7 +31,7 @@ export default class SignIn extends Component {
                 console.log(response);
             }).catch(() => {
             toast.error('problem error', {
-                position: toast.POSITION.TOP_LEFT
+                position: toast.POSITION.TOP_RIGHT
             });
             this.setState({
                 background: 'red'

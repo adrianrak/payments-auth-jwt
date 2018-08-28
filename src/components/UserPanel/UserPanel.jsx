@@ -29,7 +29,8 @@ export default class UserPanel extends Component {
         // axios.post('/checkout/', this.instance.requestPaymentMethod());
         console.log('none', {nonce});
         console.log('auth', this.state.clientToken);
-        console.log('instance', this.instance.requestPaymentMethod());
+        console.log('instance', this.instance)
+        console.log('instancePromise', this.instance.requestPaymentMethod());
     };
 
     render() {

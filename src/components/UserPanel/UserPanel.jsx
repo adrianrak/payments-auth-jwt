@@ -25,8 +25,11 @@ export default class UserPanel extends Component {
     buy = () => {
         // Send the nonce to your server
         const {nonce} = this.instance.requestPaymentMethod();
-        // fetch(`/checkout/${nonce}`);
-        fetch(`http://localhost:4000//api/auth/checkout/${nonce}`);
+        fetch('/checkout', this.instance.requestPaymentMethod());
+        // axios.post('/checkout/', this.instance.requestPaymentMethod());
+        console.log('none', {nonce});
+        console.log('auth', this.state.clientToken);
+        console.log('instance', this.instance.requestPaymentMethod());
     };
 
     render() {

@@ -27,7 +27,7 @@ app.use('/api/auth', AuthController);
 
 // The checkout route
 var checkout = require('./auth/checkout');
-app.use('/api/auth/checkout', checkout);
+app.use('/checkout', checkout);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     next(createError(404));

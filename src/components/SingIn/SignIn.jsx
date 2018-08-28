@@ -23,7 +23,7 @@ export default class SignIn extends Component {
         ApiService.signInUser(userLoginData)
             .then((response) => {
                 toast.success("You have login into the account successfully!", {
-                    position: toast.POSITION.TOP_CENTER
+                    position: toast.POSITION.TOP_RIGHT
                 });
                 this.setState({
                     background: '#37b137'
@@ -31,7 +31,7 @@ export default class SignIn extends Component {
                 console.log(response);
             }).catch(() => {
             toast.error('problem error', {
-                position: toast.POSITION.TOP_LEFT
+                position: toast.POSITION.TOP_RIGHT
             });
             this.setState({
                 background: 'red'
@@ -47,35 +47,37 @@ export default class SignIn extends Component {
 
     render() {
         return (
-            <form className="form-center">
-                <div className="form-group">
-                    <ToastContainer className="toast-view" style={{backgroundColor: this.state.background}}
-                                    autoClose={1000}/>
+                <div className="animated bounceInLeft SignIn container" id="SignIn">
+                    <form className="form-center">
+                        <div className="form-group">
+                            <ToastContainer className="toast-view" style={{backgroundColor: this.state.background}}
+                                            autoClose={1000}/>
+                        </div>
+                        <div className="form-group">
+                            <label>Email</label>
+                            <input type="email" className="form-control" name="email"
+                                   onChange={event => this.handleChange(event)}
+                                   aria-describedby="emailHelp" placeholder="Enter email"/>
+                            <small id="emailHelp" className="form-text text-muted">We'll never share your email with
+                                anyone else.
+                            </small>
+                        </div>
+                        <div className="form-group">
+                            <label>Password</label>
+                            <input type="password" className="form-control" name="password"
+                                   onChange={event => this.handleChange(event)}
+                                   placeholder="Password"/>
+                        </div>
+                        <div className="form-group">
+                            <button type="submit" className="btn btn-secondary btn-sign-in"
+                                    onClick={event => this.handleSubmit(event)}>
+                                <Link to="/userpanel">
+                                    Log In
+                                </Link>
+                            </button>
+                        </div>
+                    </form>
                 </div>
-                <div className="form-group">
-                    <label>Email</label>
-                    <input type="email" className="form-control" name="email"
-                           onChange={event => this.handleChange(event)}
-                           aria-describedby="emailHelp" placeholder="Enter email"/>
-                    <small id="emailHelp" className="form-text text-muted">We'll never share your email with
-                        anyone else.
-                    </small>
-                </div>
-                <div className="form-group">
-                    <label>Password</label>
-                    <input type="password" className="form-control" name="password"
-                           onChange={event => this.handleChange(event)}
-                           placeholder="Password"/>
-                </div>
-                <div className="text-center mt-3">
-                    <button type="submit" className="btn btn-secondary"
-                            onClick={event => this.handleSubmit(event)}>
-                        <Link to="/userpanel">
-                            Log In
-                        </Link>
-                    </button>
-                </div>
-            </form>
         );
     }
 }

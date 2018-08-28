@@ -26,12 +26,11 @@ app.use('/api/auth', AuthController);
 
 //BNRAINTREE
 // The checkout route
-// var checkout = require('./routes/checkout');
-// app.use('/checkout', checkout);
-
+var checkout = require('./auth/checkout');
+app.use('/checkout', checkout);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  next(createError(404));
+    next(createError(404));
 });
 
 // error handler

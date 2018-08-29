@@ -22,13 +22,13 @@ export default class UserPanel extends Component {
         // });
     };
 
-    buy = () => {
+    async buy () {
         // Send the nonce to your server
-        const {nonce} = this.instance.requestPaymentMethod();
+        const {nonce} = await this.instance.requestPaymentMethod();
         // fetch('/checkout', this.instance.requestPaymentMethod());
-        // fetch(`/checkout/${nonce}`);
-        axios.post('/checkout', this.instance.requestPaymentMethod());
-        console.log('none', {nonce});
+        await fetch(`/checkout/${nonce}`);
+        //axios.post('/checkout',{'paymentMethodNonce': {nonce}} );
+        console.log('none', nonce);
         console.log('auth', this.state.clientToken);
         console.log('instance', this.instance)
         console.log('instancePromise', this.instance.requestPaymentMethod());

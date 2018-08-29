@@ -22,16 +22,24 @@ export default class UserPanel extends Component {
         // });
     };
 
-    async buy () {
+    async buy() {
         // Send the nonce to your server
-        const {nonce} = await this.instance.requestPaymentMethod();
-        // fetch('/checkout', this.instance.requestPaymentMethod());
-        await fetch(`/checkout/${nonce}`);
-        //axios.post('/checkout',{'paymentMethodNonce': {nonce}} );
-        console.log('none', nonce);
-        console.log('auth', this.state.clientToken);
-        console.log('instance', this.instance)
-        console.log('instancePromise', this.instance.requestPaymentMethod());
+        const { nonce } = await this.instance.requestPaymentMethod();
+        const payment = {
+            'paymentMethodNonce': nonce
+        }
+        const axiosConfig = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        axios.post('/checkout', payment, axiosConfig);
+
+        //TODO for checking
+        // console.log('none', nonce);
+        // console.log('auth', this.state.clientToken);
+        // console.log('instance', this.instance)
+        // console.log('instancePromise', this.instance.requestPaymentMethod());
     };
 
     render() {
@@ -45,7 +53,7 @@ export default class UserPanel extends Component {
             return (
                 <div style={{ textAlign: "center" }}>
                     <DropIn
-                        options={{authorization: this.state.clientToken}}
+                        options={{ authorization: this.state.clientToken }}
                         onInstance={instance => (this.instance = instance)}
                     />
                     <button onClick={() => this.buy()}>Buy</button>

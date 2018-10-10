@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import {ToastContainer, toast} from 'react-toastify';
+import React, { Component } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 import ApiService from '../../service/api.service';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default class SignIn extends Component {
     constructor(props) {
@@ -30,13 +30,13 @@ export default class SignIn extends Component {
                 });
                 console.log(response);
             }).catch(() => {
-            toast.error('problem error', {
-                position: toast.POSITION.TOP_RIGHT
+                toast.error('problem error', {
+                    position: toast.POSITION.TOP_RIGHT
+                });
+                this.setState({
+                    background: 'red'
+                })
             });
-            this.setState({
-                background: 'red'
-            })
-        });
     };
 
     handleChange = (event) => {
@@ -47,37 +47,37 @@ export default class SignIn extends Component {
 
     render() {
         return (
-                <div className="animated bounceInLeft SignIn container" id="SignIn">
-                    <form className="form-center">
-                        <div className="form-group">
-                            <ToastContainer className="toast-view" style={{backgroundColor: this.state.background}}
-                                            autoClose={1000}/>
-                        </div>
-                        <div className="form-group">
-                            <label>Email</label>
-                            <input type="email" className="form-control" name="email"
-                                   onChange={event => this.handleChange(event)}
-                                   aria-describedby="emailHelp" placeholder="Enter email"/>
-                            <small id="emailHelp" className="form-text text-muted">We'll never share your email with
-                                anyone else.
+            <div className="animated bounceInLeft SignIn container" id="SignIn">
+                <form className="form-center">
+                    <div className="form-group">
+                        <ToastContainer className="toast-view" style={{ backgroundColor: this.state.background }}
+                            autoClose={1000} />
+                    </div>
+                    <div className="form-group">
+                        <label>Email</label>
+                        <input type="email" className="form-control" name="email"
+                            onChange={event => this.handleChange(event)}
+                            aria-describedby="emailHelp" placeholder="Enter email" />
+                        <small id="emailHelp" className="form-text text-muted">We'll never share your email with
+                            anyone else.
                             </small>
-                        </div>
-                        <div className="form-group">
-                            <label>Password</label>
-                            <input type="password" className="form-control" name="password"
-                                   onChange={event => this.handleChange(event)}
-                                   placeholder="Password"/>
-                        </div>
-                        <div className="form-group">
-                            <button type="submit" className="btn btn-secondary btn-sign-in"
-                                    onClick={event => this.handleSubmit(event)}>
-                                <Link to="/userpanel">
-                                    Log In
+                    </div>
+                    <div className="form-group">
+                        <label>Password</label>
+                        <input type="password" className="form-control" name="password"
+                            onChange={event => this.handleChange(event)}
+                            placeholder="Password" />
+                    </div>
+                    <div className="form-group">
+                        <button type="submit" className="btn btn-secondary btn-sign-in"
+                            onClick={event => this.handleSubmit(event)}>
+                            <Link to="/userpanel">
+                                Log In
                                 </Link>
-                            </button>
-                        </div>
-                    </form>
-                </div>
+                        </button>
+                    </div>
+                </form>
+            </div>
         );
     }
 }

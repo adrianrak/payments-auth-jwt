@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {ToastContainer, toast} from 'react-toastify';
+import React, { Component } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 import ApiService from '../../service/api.service';
 
 export default class SignUp extends Component {
@@ -40,13 +40,13 @@ export default class SignUp extends Component {
                         background: '#37b137'
                     })
                 }).catch(() => {
-                toast.error('problem error', {
-                    position: toast.POSITION.TOP_RIGHT
+                    toast.error('problem error', {
+                        position: toast.POSITION.TOP_RIGHT
+                    });
+                    this.setState({
+                        background: 'red'
+                    })
                 });
-                this.setState({
-                    background: 'red'
-                })
-            });
         }
     };
 
@@ -69,65 +69,65 @@ export default class SignUp extends Component {
                         </ul>
                     </div>
                     <div className="contact">
-                            <span>
-                                <ToastContainer className="toast-view" style={{backgroundColor: this.state.background}}
-                                                autoClose={1000}/>
-                            </span>
+                        <span>
+                            <ToastContainer className="toast-view" style={{ backgroundColor: this.state.background }}
+                                autoClose={1000} />
+                        </span>
                         <form>
                             <div>
                                 <label>Name</label>
                                 <input type="text" className="form-control" name="name"
-                                       onChange={event => this.handleChange(event)}
-                                       aria-describedby="emailHelp" placeholder="Enter Name"/>
+                                    onChange={event => this.handleChange(event)}
+                                    aria-describedby="emailHelp" placeholder="Enter Name" />
                             </div>
                             <div>
                                 <label>Email</label>
                                 <input type="email" className="form-control" name="email"
-                                       onChange={event => this.handleChange(event)}
-                                       aria-describedby="emailHelp" placeholder="Enter email"/>
+                                    onChange={event => this.handleChange(event)}
+                                    aria-describedby="emailHelp" placeholder="Enter email" />
                                 {/*<small id="emailHelp" className="form-text text-muted">We'll never share your email with*/}
-                                    {/*anyone else.*/}
+                                {/*anyone else.*/}
                                 {/*</small>*/}
                             </div>
                             <div>
                                 <label>Password</label>
                                 <input type="password" className="form-control" name="password"
-                                       onChange={event => this.handleChange(event)}
-                                       placeholder="Password"/>
+                                    onChange={event => this.handleChange(event)}
+                                    placeholder="Password" />
                             </div>
                             <div>
                                 <label>Repeat password</label>
                                 <input type="password" className="form-control" name="repeatedPassword"
-                                       onChange={event => this.handleChange(event)}
-                                       placeholder="Password"/>
+                                    onChange={event => this.handleChange(event)}
+                                    placeholder="Password" />
                             </div>
                             <div>
                                 <label>Postal code</label>
                                 <input type="text" className="form-control" name="postalCode"
-                                       onChange={event => this.handleChange(event)}
-                                       placeholder="Password"/>
+                                    onChange={event => this.handleChange(event)}
+                                    placeholder="Password" />
                             </div>
                             <div>
                                 <label>Credit card number </label>
                                 <input type="text" className="form-control" name="cardNumber"
-                                       onChange={event => this.handleChange(event)}
-                                       placeholder="Password"/>
+                                    onChange={event => this.handleChange(event)}
+                                    placeholder="Password" />
                             </div>
                             <div>
                                 <label>Expiry date of card</label>
                                 <input type="text" className="form-control" name="cardExpiryDate"
-                                       onChange={event => this.handleChange(event)}
-                                       placeholder="Password"/>
+                                    onChange={event => this.handleChange(event)}
+                                    placeholder="Password" />
                             </div>
                             <div>
                                 <label>CVV</label>
                                 <input type="text" className="form-control" name="cardCVV"
-                                       onChange={event => this.handleChange(event)}
-                                       placeholder="Password"/>
+                                    onChange={event => this.handleChange(event)}
+                                    placeholder="Password" />
                             </div>
-                            <div className="text-center" style={{width:"200%"}}>
-                                <button type="submit" className="btn btn-secondary" style={{width:"50%", marginTop:"3%"}}
-                                        onClick={event => this.handleSubmit(event)}>Create Account
+                            <div className="text-center" style={{ width: "200%" }}>
+                                <button type="submit" className="btn btn-secondary" style={{ width: "50%", marginTop: "3%" }}
+                                    onClick={event => this.handleSubmit(event)}>Create Account
                                 </button>
                             </div>
                         </form>
